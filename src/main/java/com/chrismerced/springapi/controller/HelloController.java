@@ -4,11 +4,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.chrismerced.springapi.model.User;
+import com.chrismerced.springapi.service.UserService;
 
 
 @RestController
 public class HelloController {
-    
+    private final UserService userService;    
+
+    public HelloController(UserService userService){
+        this.userService = userService;
+    }
+
     @GetMapping("/hello")
     public String hello() {
         return "Hello";
@@ -23,10 +29,8 @@ public class HelloController {
     }
     
     @GetMapping("/newUser")
-    public String getMethodName(@RequestParam String firstName, String lastName) {
-        User chris = new User(firstName, lastName);        
-        
-        return "Hello " + chris.getFirstName() + " " + chris.getLastName();
+    public User displayUser(@RequestParam String firstName, String lastName) {
+        return userService.GetUser(firstName, lastName);
     }
     
     @GetMapping("/error")
