@@ -9,7 +9,7 @@ public class UserService{
 
     }
 
-    public User GetUser(String firstName, String lastName){
+    public User getUser(String firstName, String lastName){
         return new User(firstName, lastName);
     }
 }

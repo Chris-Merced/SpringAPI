@@ -30,7 +30,7 @@ public class HelloController {
     
     @GetMapping("/newUser")
     public User displayUser(@RequestParam String firstName, String lastName) {
-        return userService.GetUser(firstName, lastName);
+        return userService.getUser(firstName, lastName);
     }
     
     @GetMapping("/error")
